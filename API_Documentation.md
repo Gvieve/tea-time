@@ -225,7 +225,7 @@ The request updates an existing user subscription record, and if included adds o
 
 ### Error Handling
 ### Sad Path Response (no data matches query)
-* A sad path response is returned when no matching data can be found, such as when the student search returns 0 results.
+* A sad path response is returned when no matching data can be found, such as when the tea search returns 0 results.
 
   ```json
     {
