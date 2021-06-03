@@ -4,6 +4,8 @@ RSpec.describe Subscription, type: :model do
   describe 'relationships' do
     it {should belong_to :user}
     it {should belong_to :plan}
+    it {should have_many :tea_subscriptions}
+    it {should have_many(:teas).through(:tea_subscriptions)}
   end
 
   describe 'validations' do
