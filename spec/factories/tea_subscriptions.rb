@@ -4,6 +4,6 @@ FactoryBot.define do
     tea
     current_price { tea.price }
     quantity { Faker::Number.between(from: 1, to: 10) }
-    status { 0 }
+    status { nil }
   end
 end
