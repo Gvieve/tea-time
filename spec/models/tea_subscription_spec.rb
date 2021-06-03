@@ -17,7 +17,7 @@ RSpec.describe TeaSubscription, type: :model do
 
   describe 'tea subscription status' do
     before :each do
-      @tea_subscription = create(:subscription)
+      @tea_subscription = create(:subscription, status: 0)
     end
 
     it "tea_subscription status is active when created" do

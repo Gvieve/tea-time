@@ -12,5 +12,7 @@ class Subscription < ApplicationRecord
 
   enum status: [:active, :cancelled, :paused]
 
-  before_create {self.status = 'active'}
+  def plan_description
+    plan.description
+  end
 end

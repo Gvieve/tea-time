@@ -114,8 +114,8 @@ The request creates a user subscription record and one or more tea subscription 
             "title": "Earl Grey",
             "box_count": 20,
             "quantity": 2,
-            "unit_price": 7.99,
-            "total_price": 15.98,
+            "unit_price": "7.99",
+            "total_price": "15.98",
             "status": "active"
           },
           {
@@ -123,8 +123,8 @@ The request creates a user subscription record and one or more tea subscription 
             "title": "Lemon Lift",
             "box_count": 20,
             "quantity": 1,
-            "unit_price": 16.99,
-            "total": 16.99,
+            "unit_price": "16.99",
+            "total_price": "16.99",
             "status": "active"
           }
         ]
@@ -200,8 +200,8 @@ The request updates an existing user subscription record, and if included adds o
             "title": "Earl Grey",
             "box_count": 20,
             "quantity": 2,
-            "unit_price": 7.99,
-            "total_price": 15.98,
+            "unit_price": "7.99",
+            "total_price": "15.98",
             "status": "active"
           },
           {
@@ -209,8 +209,8 @@ The request updates an existing user subscription record, and if included adds o
             "title": "Lemon Lift",
             "box_count": 20,
             "quantity": 1,
-            "unit_price": 16.99,
-            "total": 16.99,
+            "unit_price": "16.99",
+            "total": "16.99",
             "status": "active"
           }
         ]

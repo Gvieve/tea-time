@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2021_06_03_021658) do
   create_table "subscriptions", force: :cascade do |t|
     t.bigint "user_id"
     t.string "name"
-    t.integer "status"
+    t.integer "status", default: 0
     t.date "process_on_date"
     t.bigint "plan_id"
     t.datetime "created_at", null: false
