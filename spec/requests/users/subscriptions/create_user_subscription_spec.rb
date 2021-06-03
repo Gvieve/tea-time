@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'User subscriptions request' do
   describe 'happy path' do
-    before :all do
+    before :each do
       @user = create(:user)
       plan = create(:plan, weekly_frequency: 4)
       @teas = create_list(:tea, 3)
@@ -50,7 +50,7 @@ describe 'User subscriptions request' do
 
   describe 'sad path/edge cases' do
     describe 'returns an error' do
-      before :all do
+      before :each do
         @user = create(:user)
         plan = create(:plan, weekly_frequency: 4)
         @teas = create_list(:tea, 3)
