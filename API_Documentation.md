@@ -220,7 +220,73 @@ The request updates an existing user subscription record, and if included adds o
   ```
 
 ### Get User's Subscriptions
+`GET /api/v1/users/:user_id/subscriptions`
 
+The request gets all user subscription records and related tea subscription records when given valid data.
+* __Required__
+
+  The following fields are required in the route request. If any required fields are missing or include invalid data an error will be returned (see [error handling](#error-handling)).
+  * user_id = integer
+
+  Example json response
+  `GET /api/v1/users/1/subscriptions`
+  ```json
+  {
+    "data": {
+      "id": "12",
+      "type": "user_subscriptions",
+      "attributes": {
+        "subscriptions": [
+          {
+            "user_id": 1,
+            "name": "My Monthly Tea Fix",
+            "process_on_date": "2021-07-01",
+            "weekly_frequency": "Every 4 weeks",
+            "status": "active",
+            "teas": [
+              {
+                "tea_id": 201,
+                "title": "Earl Grey",
+                "box_count": 20,
+                "quantity": 2,
+                "unit_price": "7.99",
+                "total_price": "15.98",
+                "status": "active"
+              },
+              {
+                "tea_id": 254,
+                "title": "Lemon Lift",
+                "box_count": 20,
+                "quantity": 1,
+                "unit_price": "16.99",
+                "total_price": "16.99",
+                "status": "active"
+              }
+            ]
+          },
+          {
+            "user_id": 1,
+            "name": "My Teas",
+            "process_on_date": "2020-07-01",
+            "weekly_frequency": "Every 4 weeks",
+            "status": "cancelled",
+            "teas": [
+              {
+                "tea_id": 201,
+                "title": "Earl Grey",
+                "box_count": 20,
+                "quantity": 3,
+                "unit_price": "7.99",
+                "total_price": "23.97",
+                "status": "cancelled"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  }
+  ```
 ### Get Teas
 
 ### Error Handling
