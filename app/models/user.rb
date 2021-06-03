@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_one :user_profile
+  has_many :subscriptions
 
   validates :email, presence: true
   validates_uniqueness_of :email

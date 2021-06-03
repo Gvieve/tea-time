@@ -1,4 +1,12 @@
 class Api::V1::SubscriptionsController < ApplicationController
+  before_action :validate_parameters
+
+  def index
+    data = user.subscriptions if user
+    subscriptions = UserSubscriptions.new(data)
+    render_success(UserSubscriptionsSerializer.new(subscriptions))
+  end
+
   def create
     return render_error("Required parameter missing") if missing_params(required_create)
     params[:plan_id] = plan.id
