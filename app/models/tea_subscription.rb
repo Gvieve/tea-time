@@ -22,6 +22,15 @@ class TeaSubscription < ApplicationRecord
     end
   end
 
+  def self.update_all(subscription, params)
+
+    params[:teas].each do |tea|
+      find_by!(tea_id: tea[:tea_id]).update(
+        status: tea[:status],
+        quantity: tea[:quantity])
+    end
+  end
+
   def total_price
     quantity * current_price
   end
