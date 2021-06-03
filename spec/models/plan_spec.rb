@@ -8,4 +8,8 @@ RSpec.describe Plan, type: :model do
     it {should validate_numericality_of(:weekly_frequency).is_greater_than_or_equal_to(1)}
     it {should validate_numericality_of(:weekly_frequency).is_less_than_or_equal_to(12)}
   end
+
+  describe 'relationships' do
+    it {should have_many :subscriptions}
+  end
 end

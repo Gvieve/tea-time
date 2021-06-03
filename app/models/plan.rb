@@ -1,10 +1,12 @@
 class Plan < ApplicationRecord
+  has_many :subscriptions
+
   validates :description,
             :weekly_frequency,
             presence: true
 
   validates :weekly_frequency,
-            numericality: 
+            numericality:
             {only_integer: true,
             greater_than_or_equal_to: 1,
             less_than_or_equal_to: 12}

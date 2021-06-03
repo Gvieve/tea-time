@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_03_012455) do
+ActiveRecord::Schema.define(version: 2021_06_03_014444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(version: 2021_06_03_012455) do
     t.integer "weekly_frequency"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.integer "status"
+    t.date "process_on_date"
+    t.bigint "plan_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plan_id"], name: "index_subscriptions_on_plan_id"
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
 
   create_table "teas", force: :cascade do |t|
@@ -52,5 +64,7 @@ ActiveRecord::Schema.define(version: 2021_06_03_012455) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "subscriptions", "plans"
+  add_foreign_key "subscriptions", "users"
   add_foreign_key "user_profiles", "users"
 end
