@@ -6,6 +6,10 @@ RSpec.describe User, type: :model do
     it { should validate_uniqueness_of :email }
   end
 
+  describe 'relationships' do
+    it {should have_one :user_profile}
+  end
+
   describe 'email format validation' do
     it "creates a user with a valid email format" do
       user = User.create!(email: 'teaRobber@email.com')
@@ -14,7 +18,7 @@ RSpec.describe User, type: :model do
     end
 
     it "should not create a user with a invalid email format" do
-      user = User.new(email: 'facepetter.email.com')
+      user = User.new(email: 'meangirl.email.com')
 
       expect(user.save).to eq(false)
     end
