@@ -12,7 +12,7 @@ class UserSubscription
     @user_id = data.user_id
     @name = data.name
     @process_on_date = data.process_on_date.strftime("%Y-%m-%d")
-    @weekly_frequency = data.plan_description
+    @weekly_frequency = data.plan.description
     @status = data.status
     @teas = get_teas(data)
   end

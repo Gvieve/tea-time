@@ -11,8 +11,4 @@ class Subscription < ApplicationRecord
             presence: true
 
   enum status: [:active, :cancelled, :paused]
-
-  def plan_description
-    plan.description
-  end
 end
