@@ -1,7 +1,7 @@
-Plan.destroy_all
 UserProfile.destroy_all
 TeaSubscription.destroy_all
 Subscription.destroy_all
+Plan.destroy_all
 Tea.destroy_all
 User.destroy_all
 
@@ -15,11 +15,11 @@ end
 @plan_6 = FactoryBot.create(:plan, weekly_frequency: 6)
 @subscription = FactoryBot.create(:subscription, user: @user, plan: @plan_4)
 @subscription_2 = FactoryBot.create(:subscription, user: @user, plan: @plan_6)
-@tea_1 = FactoryBot.create(:tea, temperature: 195, brew_time: 7)
-@tea_2 = FactoryBot.create(:tea, temperature: 202, brew_time: 4)
-@tea_3 = FactoryBot.create(:tea, temperature: 190, brew_time: 5)
-@tea_4 = FactoryBot.create(:tea, temperature: 175, brew_time: 10)
-@tea_5 = FactoryBot.create(:tea, temperature: 212, brew_time: 6, title: "AA Tea")
+@tea_1 = FactoryBot.create(:tea, temperature: 195, brew_time: 7, title: "B Tea")
+@tea_2 = FactoryBot.create(:tea, temperature: 202, brew_time: 4, title: "C Tea")
+@tea_3 = FactoryBot.create(:tea, temperature: 190, brew_time: 5, title: "E Tea")
+@tea_4 = FactoryBot.create(:tea, temperature: 175, brew_time: 10, title: "D Tea")
+@tea_5 = FactoryBot.create(:tea, temperature: 212, brew_time: 6, title: "A Tea")
 @tea_subscription_1 = FactoryBot.create(:tea_subscription, tea: @tea_1, subscription: @subscription, quantity: 1, status: 'active')
 @tea_subscription_2 = FactoryBot.create(:tea_subscription, tea: @tea_2, subscription: @subscription, quantity: 2, status: 'active')
 @tea_subscription_3 = FactoryBot.create(:tea_subscription, tea: @tea_3, subscription: @subscription_2, quantity: 3, status: 'active')
