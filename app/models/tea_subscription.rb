@@ -12,6 +12,8 @@ class TeaSubscription < ApplicationRecord
 
   enum status: [:active, :cancelled, :paused]
 
+  scope :with_tea, -> { includes(:tea) }
+
   def self.create_tea_subscriptions(subscription, params)
     params[:teas].each do |tea|
       create!(
@@ -33,19 +35,5 @@ class TeaSubscription < ApplicationRecord
 
   def total_price
     quantity * current_price
-  end
-
-  def self.active_teas
-    # select('tea_subscriptions.tea_id, tea_subscriptions.subscription_id, tea_subscriptions.status, teas.title, teas.description, teas.temperature as brew_temp, teas.brew_time, teas.box_count').distinct.joins(:tea).active.order('teas.title')
-    select('tea_subscriptions.*,
-            teas.title,
-            teas.description,
-            teas.temperature as brew_temp,
-            teas.brew_time,
-            teas.box_count')
-    .distinct
-    .joins(:tea)
-    .active
-    .order('teas.title')
   end
 end

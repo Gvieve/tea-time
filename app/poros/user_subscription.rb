@@ -18,7 +18,7 @@ class UserSubscription
   end
 
   def get_teas(data)
-    data.tea_subscriptions.map do |tea_subscription|
+    data.tea_subscriptions.with_tea.map do |tea_subscription|
       {
         tea_id: tea_subscription.tea_id,
         title: tea_subscription.tea.title,
