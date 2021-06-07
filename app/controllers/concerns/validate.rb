@@ -14,6 +14,38 @@ module Validate
     render_error(error) if value.to_i == 0
   end
 
+  def min_brew_temp
+    params[:min_brew_temp]
+  end
+
+  def max_brew_temp
+    params[:max_brew_temp]
+  end
+
+  def brew_temp
+    min_brew_temp || max_brew_temp
+  end
+
+  def min_brew_time
+    params[:min_brew_time]
+  end
+
+  def max_brew_time
+    params[:max_brew_time]
+  end
+
+  def brew_time
+    min_brew_time || max_brew_time
+  end
+
+  def query_params
+    min_temp = min_brew_temp ? min_brew_temp : 0
+    max_temp = max_brew_temp ? max_brew_temp : 1_000_000
+    min_time = min_brew_time ? min_brew_time : 0
+    max_time = max_brew_time ? max_brew_time : 1_000_000
+    [min_temp, max_temp, min_time, max_time]
+  end
+
   def user
     User.find(params[:user_id])
   end

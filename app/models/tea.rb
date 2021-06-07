@@ -18,4 +18,13 @@ class Tea < ApplicationRecord
     .where("tea_subscriptions.status = 0")
     .order(:title)
   end
+
+  def self.find_by_brew_temp_and_time(query_params)
+    min_temp, max_temp, min_time, max_time = query_params
+    active_distinct
+    .where('temperature >= ?', min_temp)
+    .where('temperature <= ?', max_temp)
+    .where('brew_time >= ?', min_time)
+    .where('brew_time <= ?', max_time)
+  end
 end
