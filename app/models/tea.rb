@@ -13,11 +13,7 @@ class Tea < ApplicationRecord
 
   validates_uniqueness_of :title, scope: :box_count
 
-  def self.active_distinct
-    distinct
-    .where('tea_subscriptions.status = 0')
-    .order(:title)
-  end
+  scope :active_distinct, -> { distinct.where('tea_subscriptions.status = 0').order(:title) }
 
   def self.find_by_brew_temp_and_time(query_params)
     min_temp, max_temp, min_time, max_time = query_params
