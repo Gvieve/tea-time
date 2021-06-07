@@ -28,6 +28,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'json'
 gem 'fast_jsonapi'
 gem 'factory_bot_rails'
+gem 'faker'
 # gem 'figaro'
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -38,7 +39,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry'
-  gem 'faker'
   gem 'rspec-rails'
   gem 'capybara'
   gem 'simplecov'
