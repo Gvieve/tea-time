@@ -15,7 +15,7 @@ class Tea < ApplicationRecord
 
   def self.active_distinct
     distinct
-    .where("tea_subscriptions.status = 0")
+    .where('tea_subscriptions.status = 0')
     .order(:title)
   end
 
