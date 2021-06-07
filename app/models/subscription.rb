@@ -11,4 +11,10 @@ class Subscription < ApplicationRecord
             presence: true
 
   enum status: [:active, :cancelled, :paused]
+
+  scope :with_plan, -> { includes(:plan) }
+
+  # def with_plan
+  #   self.class.with_plan.where(id: id).first
+  # end
 end

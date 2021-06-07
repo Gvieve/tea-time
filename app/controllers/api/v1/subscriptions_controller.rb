@@ -2,7 +2,7 @@ class Api::V1::SubscriptionsController < ApplicationController
   before_action :validate_parameters
 
   def index
-    data = user.subscriptions if user
+    data = user.subscriptions.with_plan if user
     subscriptions = UserSubscriptions.new(data)
     render_success(UserSubscriptionsSerializer.new(subscriptions))
   end

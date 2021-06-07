@@ -45,11 +45,11 @@ group :development, :test do
   gem 'orderly'
   gem 'shoulda-matchers', '~> 4.0'
   gem 'active-designer'
+  gem 'bullet'
 end
 
 group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
-  gem 'bullet'
 end
 
 # group :test do
