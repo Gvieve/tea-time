@@ -4,10 +4,11 @@
 | HTTP verbs | Paths  | Used for | Output |
 | ---------- | ------ | -------- | ------:|
 | POST | /api/v1/users | Create a new user | [json](#create-user) |
-| POST | /api/v1/users | Create a new user subscription for one or more teas | [json](#create-user-subscription) |
+| POST | /api/v1/users/:user_id/subscriptions | Create a new user subscription for one or more teas | [json](#create-user-subscription) |
 | PATCH | /api/v1/users/:user_id/subscriptions/:id | Update a user's subscription and/or related tea subscriptions | [json](#update-user-subscription) |
 | GET | /api/v1/users/:user_id/subscriptions | Get all of the subscriptions for a user | [json](#user-subscriptions) |
 | GET | /api/v1/teas | Get all available teas | [json](#all-teas) |
+| GET | /api/v1/users/:user_id/tea_subscriptions?<param> | Find all active user tea subscriptions based on brew_time or temperature | [json](#all-teas) |
 | ERROR | errors | Error handling for requests | [json](#error-handling) |
 
 ### Create User
@@ -287,7 +288,75 @@ The request gets all user subscription records and related tea subscription reco
     }
   }
   ```
-### Get Teas
+### Find User Tea Subscriptions by Brew Temp or Time
+
+`GET /api/v1/users/:user_id/tea_subscriptions?min_brew_temp=<value>&max_brew_time=<value>`
+
+The request finds all active unique user tea subscriptions records. You may optionally search with query parameters of brew_temp or brew_time, both can be searched by min or max values. Results are ordered by tea title.
+* __Required__
+
+  The following fields are required in the route request. If any required fields are missing or include invalid data an error will be returned (see [error handling](#error-handling)).
+  * user_id = integer
+
+* __Optional__
+
+  You may include the following query parameters. You may search by both brew_temp and brew_time together, but min and max of the same type cannot be included. If no query parameters are included, all active unique tea subscriptions are returned.
+  * min_brew_temp = integer (must be 0 or greater)
+  * max_brew_temp = integer (must be 0 or greater)
+  * min_brew_time = integer (must be 0 or greater)
+  * max_brew_time = integer (must be 0 or greater)
+
+  Valid examples:
+  * `/api/v1/users/1/tea_subscriptions`
+  * `/api/v1/users/1/tea_subscriptions?min_brew_temp=190`
+  * `/api/v1/users/1/tea_subscriptions?max_brew_time=9`
+  * `/api/v1/users/1/tea_subscriptions?min_brew_temp=190&max_brew_time=9`
+
+  Invalid examples that will result in an error:
+  * `/api/v1/users/1/tea_subscriptions?min_brew_temp=190&max_brew_temp=100`
+  * `/api/v1/users/1/tea_subscriptions?min_brew_temp=-1`
+
+  Example json response
+  `/api/v1/users/1/tea_subscriptions?min_brew_temp=190&max_brew_time=9`
+  ```json
+  {
+    "data": {
+      "id": "1",
+      "type": "user_tea_subscriptions",
+      "attributes": {
+        "tea_subscriptions": [
+          {
+            "id": 201,
+            "title": "Earl Grey",
+            "description": "English classic black tea.",
+            "brew_temp": 195,
+            "brew_time": 6,
+            "box_count": 20,
+            "status": "active"
+          },
+          {
+            "id": 89,
+            "title": "Peach Sleepytime",
+            "description": "Fruity peach herbal tea to help you go to bed.",
+            "brew_temp": 195,
+            "brew_time": 7,
+            "box_count": 20,
+            "status": "active"
+          },
+          {
+            "id": 163,
+            "title": "Lemon Lift",
+            "description": "Light and citrusy lemon flavored tea",
+            "brew_temp": 202,
+            "brew_time": 5,
+            "box_count": 20,
+            "status": "active"
+          }
+        ]
+      }
+    }
+  }
+  ```
 
 ### Error Handling
 ### Sad Path Response (no data matches query)

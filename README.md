@@ -75,10 +75,11 @@ for notes on how to deploy the project on a live system.
 | HTTP verbs | Paths  | Used for | Output |
 | ---------- | ------ | -------- | ------:|
 | POST | /api/v1/users | Create a new user | [api doc](https://github.com/Gvieve/tea-time/blob/main/API_Documentation.md#create-user) |
-| POST | /api/v1/users | Create a new user subscription for one or more teas | [api doc](https://github.com/Gvieve/tea-time/blob/main/API_Documentation.md#create-user-subscription) |
+| POST | /api/v1/users/:user_id/subscriptions | Create a new user subscription for one or more teas | [api doc](https://github.com/Gvieve/tea-time/blob/main/API_Documentation.md#create-user-subscription) |
 | PATCH | /api/v1/users/:user_id/subscriptions/:id | Update a user's subscription and/or related tea subscriptions | [api doc](https://github.com/Gvieve/tea-time/blob/main/API_Documentation.md#update-user-subscription) |
 | GET | /api/v1/users/:user_id/subscriptions | Get all of the subscriptions for a user | [api doc](https://github.com/Gvieve/tea-time/blob/main/API_Documentation.md#user-subscriptions) |
 | GET | /api/v1/teas | Get all available teas | [api doc](https://github.com/Gvieve/tea-time/blob/main/API_Documentation.md#all-teas) |
+| GET | /api/v1/users/:user_id/tea_subscriptions?<param> | Find all active user tea subscriptions based on brew_time or temperature | [json](https://github.com/Gvieve/tea-time/blob/main/API_Documentation.md#all-teas) |
 | ERROR | errors | Error handling for requests | [api doc](https://github.com/Gvieve/tea-time/blob/main/API_Documentation.md#error-handling) |
 
 ### Testing
